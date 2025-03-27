@@ -1,0 +1,93 @@
+<!--BIT607 A2 ThomasGoodman 5113852  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snazzy Paws Grooming - Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="dog_Gallery.html">Gallery</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>        
+    </header>
+
+    <section>
+        <div id="booking-container">
+            <!-- Booking Form Section -->
+            <div id="booking-form-container">
+                <form>
+                    <h2>Booking Form</h2>
+                    <label for="name">Owner's Name:</label>
+                    <input type="text" id="name" name="name">
+
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email">
+
+                    <label for="dogname">Dog's Name:</label>
+                    <input type="text" id="dogname" name="dogname">
+
+                    <label for="breed">Breed:</label>
+                    <input type="text" id="breed" name="breed">
+
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age">
+
+                    <p>Total Cost: $<span id="total-cost">0.00</span></p>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <!-- Services Section -->
+            <div id="services-box">
+                <h2>Select Services</h2>
+                <div>
+                    <label><input type="checkbox" name="service" value="25"> Bath and Brush ($25)</label><br>
+                    <label><input type="checkbox" name="service" value="45"> Haircut ($45)</label><br>
+                    <label><input type="checkbox" name="service" value="10"> Nail Trim ($10)</label><br>
+                    <label><input type="checkbox" name="service" value="10"> Ear Cleaning ($10)</label><br>
+                    <label><input type="checkbox" name="service" value="10"> Teeth Brushing ($10)</label><br>
+                    <label><input type="checkbox" name="service" value="20"> De-shedding Treatment ($20)</label><br>
+                    <label><input type="checkbox" name="service" value="15"> Flea and Tick Treatment ($15)</label><br>
+                    <label><input type="checkbox" name="service" value="75"> Spa Package ($75)</label><br>
+                    <label><input type="checkbox" name="service" value="15"> Express Service ($15)</label><br>
+                    <label><input type="checkbox" name="service" value="20"> Medicated Bath ($20)</label><br>
+                    <label><input type="checkbox" name="service" value="30"> Puppy Package ($30)</label><br>
+                    <label><input type="checkbox" name="service" value="40"> Senior Dog Package ($40)</label><br>
+                    <label><input type="checkbox" name="service" value="60"> Full Grooming Package ($60)</label><br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculation Script -->
+    <script>
+        function calculateTotalCost() {
+            const services = document.querySelectorAll('input[name="service"]:checked');
+            let total = 0;
+
+            services.forEach(service => {
+                total += parseFloat(service.value);
+            });
+
+            document.getElementById('total-cost').textContent = total.toFixed(2);
+        }
+
+        // Attach event listeners to all checkboxes
+        const checkboxes = document.querySelectorAll('input[name="service"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', calculateTotalCost);
+        });
+    </script>
+</body>
+</html>
